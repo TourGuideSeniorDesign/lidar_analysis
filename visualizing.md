@@ -16,8 +16,10 @@ output_bags:
     storage_id: mcap
     all: true
 EOF
-```
 
+ros2 bag convert -i trial3_0.db3 -o convert.yaml
+```
+### **Step 2: Visualize the mcap file in Foxglove Studio**
 
 ![Image 2-14-25 at 5 15 PM](https://github.com/user-attachments/assets/2234df41-7978-4a13-8a70-fb9920661b46)
 
