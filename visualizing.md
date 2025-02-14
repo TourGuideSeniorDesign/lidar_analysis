@@ -16,10 +16,8 @@ output_bags:
     storage_id: mcap
     all: true
 EOF
-
-
+```
 
 
 ![Image 2-14-25 at 5 15 PM](https://github.com/user-attachments/assets/2234df41-7978-4a13-8a70-fb9920661b46)
 
-2. If we want to visualize on the 
