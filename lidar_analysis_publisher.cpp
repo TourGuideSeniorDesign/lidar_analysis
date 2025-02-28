@@ -14,6 +14,7 @@ struct BoundingBox {
     Eigen::Vector3f min_pt;
     Eigen::Vector3f max_pt;
     float distance; 
+    float angle_deg;
 };
 
 
