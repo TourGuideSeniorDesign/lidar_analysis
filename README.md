@@ -24,21 +24,25 @@ Behavior: Inside the callback it converts the incoming PointCloud2 message to a 
    
 
 2. lidar_detection.cpp
+
 Description: Stand‑alone C++ tool for analysing offline LiDAR logs stored as byte arrays.
 
 Behavior: Reads a text file containing raw Livox bytes, parses each 26‑byte packet into x,y,z,intensity,tag,line,timestamp structures and converts them into a PCL point cloud. It then applies the same pipeline as the live node—downsampling, ground segmentation, outlier removal, clustering and bounding‑box computation. The program prints cluster and bounding‑box information to the console and visualises the clusters with a PCL viewer.
 
 3. lidar_detection_decision_maker.cpp
+
 Description: ROS 2 node that couples obstacle detection with simple navigation heuristics.
 
 Behavior: After the usual downsample–segment–cluster pipeline it computes bounding boxes and uses a helper class LiDARSensor to map the nearest obstacle distance to a speed limit (3 mph at ≥3 m, 2 mph at ≥1 m, 1 mph otherwise). A separate function decideSteeringAngle examines bounding boxes within ±30° and 2 m; if an obstacle is on the left it steers right and vice‑versa. The node logs the recommended steering angle and speed limit and publishes bounding‑box data for consumption by other nodes.
 
 4. lidar_detection_distance_coordinates.cpp
+
 Description: ROS 2 node emphasising distance measurement.
 
 Behavior: Similar pipeline to the streamer but stores the centre of each bounding box and calculates its Euclidean distance from the LiDAR origin. It prints each cluster’s distance and coordinates to the ROS 2 log and visualises the clusters and their distances in a PCL viewer.
 
 5. lidar_detection_script_2.cpp
+
 Description: Simplified ROS 2 node for real‑time clustering.
 
 Behavior: Downsamples the incoming point cloud, segments the ground, removes outliers, clusters obstacles and draws wire‑frame bounding boxes in a PCL viewer. Unlike the decision‑making node, it does not compute distances or speed commands.
